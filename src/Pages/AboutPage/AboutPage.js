@@ -9,11 +9,9 @@ import About4Home from './About4Home/About4Home';
 
 const AboutPage = () => {
     return (
-        <div>
-            <Navigations></Navigations>
+        <div> 
             <LiveRouteComponent></LiveRouteComponent>
-            <About4Home></About4Home>
-            <Footer></Footer>
+            <About4Home></About4Home> 
         </div>
     );
 };

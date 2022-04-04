@@ -139,6 +139,7 @@
 //     </ThemeProvider>
 //   );
 // }
+
 import React from 'react';
 import { Container, Typography, TextField, Button, CircularProgress, Alert, } from '@mui/material';
 import { useState } from 'react';
@@ -150,7 +151,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Navigations from '../../Shared/Navigations/Navigations';
 import useFireBase from '../../../Hooks/UseFireBase';
 import Footer from '../../Shared/Footer/Footer';
-const RegisterPage = () => {
+const SignUp = () => {
   const { user, registerUser, isLoading, authError } = useFireBase();
   const [regData, setRegData] = useState({});
 
@@ -175,8 +176,7 @@ const RegisterPage = () => {
     e.preventDefault();
   }
   return (
-    <>
-      <Navigations></Navigations>
+    <> 
       <Container>
         <Grid container spacing={2}>
           <Grid item sx={{ mt: 8 }} xs={12} md={12} >
@@ -242,11 +242,10 @@ const RegisterPage = () => {
           </Grid>
         </Grid>
 
-      </Container>
-      <Footer></Footer>
+      </Container> 
     </>
 
   );
 };
 
-export default RegisterPage;
+export default SignUp;

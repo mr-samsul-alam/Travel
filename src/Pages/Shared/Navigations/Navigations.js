@@ -38,7 +38,6 @@ const Navigations = () => {
 
     const handleNavClicked = (page) => {
         switch (page) {
-
             case "Home": navigate('/home')
                 break;
             case "Packages": navigate('/packages')
@@ -55,7 +54,7 @@ const Navigations = () => {
     }
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static" style={{ backgroundColor: "#1BBF72" }} >
+            <AppBar position="fixed" style={{ backgroundColor: "white" }} >
                 <Container maxWidth="xl" >
                     <Toolbar disableGutters >
                         <Typography
@@ -75,7 +74,7 @@ const Navigations = () => {
                                 aria-controls="menu-appbar"
                                 aria-haspopup="true"
                                 onClick={handleOpenNavMenu}
-                                color="inherit"
+                                color="primary"
                             >
                                 <MenuIcon />
                             </IconButton>
@@ -99,7 +98,7 @@ const Navigations = () => {
                             >
                                 {pages.map((page) => (
                                     <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                        <Typography textAlign="center" onClick={() => handleNavClicked(page)}>{page}</Typography>
+                                        <Typography textAlign="center" style={{ fontWeight: "700", color: '#236F97B3', }} onClick={() => handleNavClicked(page)}>{page}</Typography>
                                     </MenuItem>
                                 ))}
                             </Menu>
@@ -117,9 +116,9 @@ const Navigations = () => {
                                 <Button
                                     key={page}
                                     onClick={handleCloseNavMenu}
-                                    sx={{ my: 2, color: 'white', display: 'block' }}
+                                    sx={{ my: 2, color: '#236F97B3', display: 'block' }}
                                 >
-                                    <Typography onClick={() => handleNavClicked(page)}>
+                                    <Typography style={{ fontWeight: "700", }} onClick={() => handleNavClicked(page)}>
                                         {page}
                                     </Typography>
                                 </Button>
@@ -135,18 +134,20 @@ const Navigations = () => {
                                         alignItems: "center"
                                     }}
                                 >
-                                    <Box sx={{ display: { xs: 'none', md: 'flex' }, marginLeft: '100px' }}  >{user.displayName}</Box>
-                                    <img src={user.photoURL} style={{ borderRadius: "50%", width: "20%" }} alt="" />
+                                    <Box sx={{ display: { xs: 'none', md: 'flex' }, marginLeft: '100px', color: "#236F97B3", fontWeight: "700" }}  >{user.displayName}</Box>
+                                    <img src={user.photoURL} style={{ borderRadius: "50%", width: "15%" }} alt="" />
                                     <Button
                                         style={{
                                             textDecoration: 'none',
-                                            color: 'white'
+                                            color: '#236F97B3',
+                                            fontWeight: "700",
                                         }}
                                         onClick={handleLogOut}
                                     >Logout </Button>
                                 </div> : <NavLink style={{
                                     textDecoration: 'none',
-                                    color: 'white'
+                                    color: '#236F97B3',
+                                    fontWeight: "700",
                                 }}
                                     to="/signUp" ><Button color="inherit"  >Login</Button></NavLink>
                             }

@@ -5,7 +5,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import Navigations from '../../Shared/Navigations/Navigations';
 import useFireBase from '../../../Hooks/UseFireBase';
 import Footer from '../../Shared/Footer/Footer';
-const LoginPage = () => {
+const SignIn = () => {
   const { signUsingGoogle, loginUser, user, isLoading, authError } = useFireBase()
   const [loginData, setLoginData] = useState({});
   const handleOnBlur = e => {
@@ -28,8 +28,7 @@ const LoginPage = () => {
     signUsingGoogle(location)
   }
   return (
-    <>
-      <Navigations></Navigations>
+    <> 
       <Container>
         <Grid container spacing={2}>
           <Grid item sx={{ mt: 8 }} xs={12} md={12}>
@@ -66,10 +65,9 @@ const LoginPage = () => {
           </Grid>
 
         </Grid>
-      </Container>
-      <Footer></Footer>
+      </Container> 
     </>
   );
 };
 
-export default LoginPage;
+export default SignIn;

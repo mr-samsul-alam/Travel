@@ -1,6 +1,5 @@
 import { Button, Container, Grid, Typography } from '@mui/material';
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React from 'react'; 
 
 
 const About4Home = () => {
