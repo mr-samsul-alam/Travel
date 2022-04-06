@@ -7,21 +7,18 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-// import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import { useNavigate } from 'react-router';
-import { NavLink } from 'react-router-dom';
-import useFireBase from '../../../Hooks/UseFireBase';
-// import useAuth from '../../../hooks/useAuth';
+import { NavLink } from 'react-router-dom'; 
+import useAuth from '../../../Hooks/UseAuth';
 
 const pages = ['Home', 'Packages', 'About'];
 
 
 
 const Navigations = () => {
-    // const { user, logout } = useAuth()
-    const { user, logout } = useFireBase()
+    const { user, logout } = useAuth()
     let navigate = useNavigate();
 
     const [anchorElNav, setAnchorElNav] = React.useState(null);

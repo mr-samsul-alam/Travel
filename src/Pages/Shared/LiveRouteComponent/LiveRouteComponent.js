@@ -18,8 +18,7 @@ const LiveRouteComponent = () => {
             }
         }
         wePageName(location)
-    }, [location])
-    console.log(webPageName);
+    }, [location]) 
 
     const goOnPath = () => {
         navigate('/')
@@ -30,10 +29,10 @@ const LiveRouteComponent = () => {
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            height: '200px',
+            height: '300px',
             backgroundColor: 'rgba(35,111,151,0.7)'
         }}>
-            <Typography style={{ textAlign: 'center', color: "white", }}>
+            <Typography style={{ textAlign: 'center', color: "white", padding: "100px" }}>
                 <Typography style={{ fontSize: "3rem" }} >{webPageName}</Typography>
                 <Button style={{ color: 'white', fontSize: "1.5rem", }} onClick={goOnPath}>home</Button>
                 <Button style={{ color: 'white', fontSize: "1.5rem", }}>{location?.pathname}</Button></Typography>
