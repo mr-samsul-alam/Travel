@@ -10,7 +10,7 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import { useNavigate } from 'react-router';
-import { NavLink } from 'react-router-dom'; 
+import { NavLink } from 'react-router-dom';
 import useAuth from '../../../Hooks/UseAuth';
 
 const pages = ['Home', 'Packages', 'About'];
@@ -146,7 +146,7 @@ const Navigations = () => {
                                     color: '#236F97B3',
                                     fontWeight: "700",
                                 }}
-                                    to="/signUp" ><Button color="inherit"  >Login</Button></NavLink>
+                                    to="/signIn" ><Button color="inherit"  >Login</Button></NavLink>
                             }
                         </Box>
                     </Toolbar>

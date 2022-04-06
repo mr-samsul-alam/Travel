@@ -92,7 +92,7 @@ const useFireBase = () => {
             setIsLoading(false);
         });
         return () => unsubscribed;
-    }, [auth])
+    }, [])
 
     return {
         user,

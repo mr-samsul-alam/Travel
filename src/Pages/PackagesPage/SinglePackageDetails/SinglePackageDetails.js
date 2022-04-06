@@ -15,11 +15,11 @@ const SinglePackageDetails = () => {
             .then(data => setPackage(data))
     }, [])
     const clickedPackage = packages.filter(course => course?.index === parseFloat(id))
-    console.log(parseFloat(clickedPackage[0]?.reviews_star));
+    const selectedPackage = clickedPackage[0] 
     return (
         <div >
             <div style={{
-                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)), url(${clickedPackage[0]?.main_picture})`,
+                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)), url(${selectedPackage?.main_picture})`,
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
                 backgroundPosition: "center center",
@@ -31,11 +31,11 @@ const SinglePackageDetails = () => {
                 <Container>
                     <Box style={{ position: "absolute", bottom: 0, padding: "30px" }} >
                         <Box sx={{ display: "flex", alignItems: 'center' }}>
-                            <Rating name="read-only" value={parseFloat(clickedPackage[0]?.reviews_star)} readOnly /><b style={{ color: 'white' }} >9k+ review</b>
+                            <Rating name="read-only" value={parseFloat(selectedPackage?.reviews_star)} readOnly /><b style={{ color: 'white' }} >9k+ review</b>
                         </Box>
-                        <Typography style={{ color: 'white' }} variant="h5" component="div" ><b style={{ fontSize: "2rem" }} >{clickedPackage[0]?.package_name}</b></Typography>
+                        <Typography style={{ color: 'white' }} variant="h5" component="div" ><b style={{ fontSize: "2rem" }} >{selectedPackage?.package_name}</b></Typography>
                         <Typography gutterBottom component="div">
-                            <b><span style={{ color: "#1BBF72", fontSize: "2rem" }} >{clickedPackage[0]?.price}</span> <span style={{ color: 'white' }} >/Person</span></b>
+                            <b><span style={{ color: "#1BBF72", fontSize: "2rem" }} >{selectedPackage?.price}</span> <span style={{ color: 'white' }} >/Person</span></b>
                         </Typography>
                     </Box>
                 </Container>

@@ -11,6 +11,7 @@ import Footer from './Pages/Shared/Footer/Footer';
 import PackagesPage from './Pages/PackagesPage/PackagesPage/PackagesPage';
 import AuthProvider from './Context/AuthProvider';
 import SinglePackageDetails from './Pages/PackagesPage/SinglePackageDetails/SinglePackageDetails';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
 
 function App() {
   return (
@@ -22,8 +23,8 @@ function App() {
             <Route path="/" element={<Homepage />} />
             <Route path="home" element={<Homepage />} />
             <Route path="about" element={<AboutPage />} />
-            <Route path="packages" element={<PackagesPage />} />
-            <Route path="singlePackageDetails/:id" element={<SinglePackageDetails />} />
+            <Route path="packages" element={<PackagesPage />} /> 
+            <Route path="singlePackageDetails/:id" element={<PrivateRoute > <SinglePackageDetails /></PrivateRoute >} />
             <Route path="popular_destinations" element={<PopularDestination />} />
             <Route path="signIn" element={<SignIn />} />
             <Route path="signUp" element={<SignUp />} />

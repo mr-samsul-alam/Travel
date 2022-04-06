@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
+import Backdrop from '@mui/material/Backdrop';
 import Box from '@mui/material/Box';
+import Modal from '@mui/material/Modal';
+import Fade from '@mui/material/Fade';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import useAuth from '../../../Hooks/UseAuth';
 
-
 const BookingPackage = ({ clickedPackage }) => {
-    const { user } = useAuth()
-    const { package_name, day, price } = clickedPackage[0];
+    const [_id] = clickedPackage;
 
-    const initialInfo = { patientName: user.displayName, email: user.email, phone: '' }
+    console.log(_id);
+    const { user } = useAuth()
+    const initialInfo = { bookingName: user.displayName, email: user.email, phone: '' }
     const [bookingInfo, setBookingInfo] = useState(initialInfo);
-    console.log(bookingInfo,);
 
     const handleOnBlur = e => {
         const field = e.target.name;
@@ -21,16 +23,12 @@ const BookingPackage = ({ clickedPackage }) => {
         newInfo[field] = value;
         setBookingInfo(newInfo);
     }
-
     const handleBookingSubmit = e => {
-        console.log(bookingInfo);
         // // collect data
-        // const appointment = {
+        // const Booking = {
         //     ...bookingInfo,
-        //     time,
-        //     price,
-        //     serviceName: name,
-        //     date: date.toLocaleDateString()
+
+        //     serviceName:  "ipel"
         // }
         // // send to the server
         // fetch('http://localhost:5000/appointments', {
@@ -38,50 +36,47 @@ const BookingPackage = ({ clickedPackage }) => {
         //     headers: {
         //         'content-type': 'application/json'
         //     },
-        //     body: JSON.stringify(appointment)
+        //     body: JSON.stringify(Booking)
         // })
         //     .then(res => res.json())
         //     .then(data => {
-        //         if (data.insertedId) {
-        //             setBookingSuccess(true);
-        //             handleBookingClose();
-        //         }
-        //     });
 
+        //     });
+        console.log(bookingInfo);
         e.preventDefault();
     }
 
-
-
-
     return (
         <div>
-            <Box  >
+            <Box>
                 <Typography id="transition-modal-title" variant="h6" component="h2">
-                    {package_name}
+                    {/* {package_name} */}
                 </Typography>
-                <form onSubmit={handleBookingSubmit}>
+                <form onSubmit={handleBookingSubmit} >
                     <TextField
-                        disabled
                         sx={{ width: '90%', m: 1 }}
                         id="outlined-size-small"
-                        defaultValue={user?.displayName}
+                        name="packageName"
+                        onBlur={handleOnBlur}
+                        defaultValue={_id}
+                        // defaultValue="name"
                         size="small"
                     />
                     <TextField
                         sx={{ width: '90%', m: 1 }}
                         id="outlined-size-small"
-                        name="price"
+                        name="clientName"
                         onBlur={handleOnBlur}
-                        defaultValue={price}
+                        defaultValue={user.displayName}
+                        // defaultValue="name"
                         size="small"
                     />
                     <TextField
                         sx={{ width: '90%', m: 1 }}
                         id="outlined-size-small"
-                        name="day"
+                        name="email"
                         onBlur={handleOnBlur}
-                        defaultValue={day}
+                        defaultValue={user.email}
                         size="small"
                     />
                     <TextField
@@ -92,13 +87,6 @@ const BookingPackage = ({ clickedPackage }) => {
                         defaultValue="Phone Number"
                         size="small"
                     />
-                    {/* <TextField
-                        disabled
-                        sx={{ width: '90%', m: 1 }}
-                        id="outlined-size-small"
-                        defaultValue={date.toDateString()}
-                        size="small"
-                    /> */}
                     <Button type="submit" variant="contained">Submit</Button>
                 </form>
             </Box>
