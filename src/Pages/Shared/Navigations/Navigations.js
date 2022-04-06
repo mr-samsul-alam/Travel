@@ -13,14 +13,13 @@ import { useNavigate } from 'react-router';
 import { NavLink } from 'react-router-dom';
 import useAuth from '../../../Hooks/UseAuth';
 
-const pages = ['Home', 'Packages', 'About'];
+const pages = ['Home', 'Packages', 'About', "Dashboard"];
 
 
 
 const Navigations = () => {
     const { user, logout } = useAuth()
-    let navigate = useNavigate();
-
+    let navigate = useNavigate(); 
     const [anchorElNav, setAnchorElNav] = React.useState(null);
 
     const handleOpenNavMenu = (event) => {
@@ -40,6 +39,8 @@ const Navigations = () => {
             case "Packages": navigate('/packages')
                 break;
             case "About": navigate('/about')
+                break;
+            case "Dashboard": navigate('/dashboard')
                 break;
             default: navigate('/home')
         }

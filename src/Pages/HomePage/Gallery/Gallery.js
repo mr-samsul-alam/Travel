@@ -9,8 +9,7 @@ const Gallery = () => {
         fetch('/Famous_destination.json')
             .then(res => res.json())
             .then(data => setPlaceses(data.slice(0, 4)))
-    }, [])
-    console.log(places);
+    }, []) 
     return (
         <div>
             <Container style={{ paddingTop: "10px" }}>

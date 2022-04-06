@@ -3,6 +3,7 @@ import { Container, Typography, TextField, Button, CircularProgress, Alert } fro
 import { Grid } from '@mui/material';
 import { NavLink, useLocation } from 'react-router-dom'; 
 import useAuth from '../../../Hooks/UseAuth';
+import Navigations from '../../Shared/Navigations/Navigations';
 const SignIn = () => {
   const { signUsingGoogle, loginUser, user, isLoading, authError } = useAuth()
   const [loginData, setLoginData] = useState({});
@@ -26,7 +27,8 @@ const SignIn = () => {
     signUsingGoogle(location)
   }
   return (
-    <> 
+    <>  
+    <Navigations></Navigations>
       <Container>
         <Grid container spacing={2}>
           <Grid item sx={{ mt: 8 }} xs={12} md={12}>

@@ -5,6 +5,7 @@ import Rating from '@mui/material/Rating';
 import { Box, padding } from '@mui/system';
 import { Grid, Typography, Container } from '@mui/material';
 import BookingPackage from '../BookingPackage/BookingPackage';
+import Navigations from '../../Shared/Navigations/Navigations';
 
 const SinglePackageDetails = () => {
     const [packages, setPackage] = useState([])
@@ -17,7 +18,8 @@ const SinglePackageDetails = () => {
     const clickedPackage = packages.filter(course => course?.index === parseFloat(id))
     const selectedPackage = clickedPackage[0] 
     return (
-        <div >
+        <div > 
+          <Navigations></Navigations>
             <div style={{
                 backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)), url(${selectedPackage?.main_picture})`,
                 backgroundRepeat: 'no-repeat',

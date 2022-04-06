@@ -6,6 +6,7 @@ import Avatar from '@mui/material/Avatar';
 import { NavLink, useNavigate } from 'react-router-dom';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import useAuth from '../../../Hooks/UseAuth';
+import Navigations from '../../Shared/Navigations/Navigations';
 const SignUp = () => {
   const { user, registerUser, isLoading, authError } = useAuth();
   const [regData, setRegData] = useState({});
@@ -31,7 +32,8 @@ const SignUp = () => {
     e.preventDefault();
   }
   return (
-    <>
+    <> 
+    <Navigations></Navigations>
       <Container>
         <Grid container spacing={2}>
           <Grid item sx={{ mt: 8 }} xs={12} md={12} >
