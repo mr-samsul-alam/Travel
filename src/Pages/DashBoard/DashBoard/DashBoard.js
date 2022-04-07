@@ -27,8 +27,7 @@ function Dashboard(props) {
     let navigate = useNavigate()
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
-    };
-    console.log(admin);
+    }; 
     const handleRoute = (text) => {
 
         if (admin === true) { 
