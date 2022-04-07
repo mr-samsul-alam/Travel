@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Navigations from '../../Shared/Navigations/Navigations';
-import BookingPackage from './BookingPackage/BookingPackage';
-import PackageDetails from './PackageDetails/PackageDetails';
-import { useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import Rating from '@mui/material/Rating';
 import { Box } from '@mui/system';
-import { Grid, Typography, Container, Button, TextField } from '@mui/material';
+import { Grid, Typography, Container, Button, TextField, Alert } from '@mui/material';
 import useAuth from '../../../Hooks/UseAuth';
 
 const SinglePackageDetails = () => {
@@ -13,6 +11,7 @@ const SinglePackageDetails = () => {
     const [bookingSuccess, setBookingSuccess] = useState(false);
     const { user } = useAuth()
     const { id } = useParams()
+    const navigate = useNavigate();
     useEffect(() => {
         const hello = async () => {
             await fetch(`http://localhost:5000/products/${id}`)
@@ -22,38 +21,38 @@ const SinglePackageDetails = () => {
         hello()
     }, [id])
 
-    console.log(selectedPackage);
-    const initialInfo = { selectedPackage, Name: user.displayName, email: user.email, phone: '' }
-
-
-
-    const [bookingInfo, setBookingInfo] = useState(initialInfo);
+    const initialInfo = { Name: user.displayName, email: user.email, phone: '' }
+    const [bookingInformation, setBookingInfo] = useState(initialInfo);
 
     const handleOnBlur = (e) => {
         const field = e.target.name;
         const value = e.target.value;
-        const newInfo = { ...bookingInfo };
+        const newInfo = { ...bookingInformation };
         newInfo[field] = value;
         console.log(newInfo);
         setBookingInfo(newInfo)
     }
     const handleBookingSubmit = (e) => {
-
-        // fetch('http://localhost:5000/bookingInfo', {
-        //     method: 'POST',
-        //     headers: {
-        //         'content-type': 'application/json'
-        //     },
-        //     body: JSON.stringify(bookingInfo)
-        // })
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         if (data.insertedId) {
-        //             setBookingSuccess(true);
-        //         }
-        //     });
-        console.log({ ...bookingInfo, selectedPackage });
+        const bookingInfo = { ...bookingInformation, packageName: selectedPackage.package_name, packageImg: selectedPackage.main_picture, price: selectedPackage.price, status: "padding" }
+        console.log(bookingInfo);
+        fetch('http://localhost:5000/bookingInfo', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(bookingInfo)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    setBookingSuccess(true);
+                }
+            });
+        console.log();
         e.preventDefault();
+    }
+    const goToCart = () => {
+        navigate("/dashboard/myPlans")
     }
 
     return (
@@ -113,6 +112,8 @@ const SinglePackageDetails = () => {
 
                             <Button type="submit" variant="contained">Submit</Button>
                         </form>
+                        {bookingSuccess && <Alert severity="success">Your Order Added successfully!</Alert>}
+                        {bookingSuccess && <Button onClick={goToCart} type="submit" variant="contained">My Cart</Button>}
                     </Grid>
                 </Grid>
             </Container>

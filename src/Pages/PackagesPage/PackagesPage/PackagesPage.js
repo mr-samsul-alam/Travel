@@ -21,7 +21,7 @@ const PackagesPage = () => {
                 <Grid container spacing={2}>
 
                     {
-                        packages.map(s_package => <PackageCard key={s_package.index} s_package={s_package} ></PackageCard>)
+                        packages.map(s_package => <PackageCard key={s_package._id} s_package={s_package} ></PackageCard>)
                     }
                 </Grid>
 
