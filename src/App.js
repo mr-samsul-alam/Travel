@@ -9,7 +9,7 @@ import PopularDestination from './Pages/PopularDestination/PopularDestination/Po
 import Footer from './Pages/Shared/Footer/Footer';
 import PackagesPage from './Pages/PackagesPage/PackagesPage/PackagesPage';
 import AuthProvider from './Context/AuthProvider';
-import SinglePackageDetails from './Pages/PackagesPage/SinglePackageDetails/SinglePackageDetails';
+import SinglePackageDetails from './Pages/PackagesPage/SinglePackageDetails/SinglePackageDetails.js';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import DashBoard from './Pages/DashBoard/DashBoard/DashBoard';
 import DashBoardHome from './Pages/DashBoard/DashBoardHome/DashBoardHome';

@@ -26,7 +26,7 @@ const PopularDestinationCard = (props) => {
                     image={main_picture}
                 />
                 <CardContent>
-                    <Typography gutterBottom variant="h5" component="div" sx={{ color: "#1BBF72" }}>
+                    <Typography  variant="h5" component="div" sx={{ color: "#1BBF72" }}>
                         {name}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">

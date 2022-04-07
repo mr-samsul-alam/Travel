@@ -25,7 +25,7 @@ const Header = () => {
                         }}
                     />
                     <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-                        <Typography style={{ color: '#FFA914', fontSize: '4rem' }} component="div" gutterBottom>
+                        <Typography style={{ color: '#FFA914', fontSize: '4rem' }} component="div"  >
                             DISCOVER
                         </Typography>
                         <Typography style={{ color: '#1675Ac', fontSize: '2rem' }} component="div">

@@ -8,13 +8,13 @@ const PackagesPage = () => {
     const [packages, setPackages] = useState([])
 
     useEffect(() => {
-        fetch('/Package_Fake_Data.json')
+        fetch('http://localhost:5000/packages')
             .then(res => res.json())
             .then(data => setPackages(data))
-    }, []) 
+    }, [])
     return (
-        <div> 
-          <Navigations></Navigations>
+        <div>
+            <Navigations></Navigations>
             <LiveRouteComponent></LiveRouteComponent>
             <Container style={{ paddingTop: "10px" }}>
                 <h1 style={{ color: "#1BBF72" }}>Packages </h1>
