@@ -1,19 +1,51 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../../Hooks/UseAuth';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import { Link } from 'react-router-dom';
 
 const MyCart = () => {
     const [order, SetOrder] = useState()
-    const { user } = useAuth()
-    useEffect(() => {
-        fetch(`http://localhost:5000/users/${user.email}`)
-            .then(res => res.json())
-            .then(data => SetOrder(data))
-    }, [])
-    console.log(order.packageId);
-
+    const { user } = useAuth() 
     return (
         <div>
-            <h1 >This is my cart</h1>
+            <h1>hellow from my cart</h1>
+            <div>
+                {/* <TableContainer component={Paper}>
+                    <Table sx={{}} aria-label="Appointments table">
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>Name</TableCell>
+                                <TableCell align="right">Time</TableCell>
+                                <TableCell align="right">Service</TableCell>
+                                <TableCell align="right">Action</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {appointments.map((row) => (
+                                <TableRow
+                                    key={row._id}
+                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                >
+                                    <TableCell component="th" scope="row">
+                                        {row.patientName}
+                                    </TableCell>
+                                    <TableCell align="right">{row.time}</TableCell>
+                                    <TableCell align="right">{row.serviceName}</TableCell>
+                                    <TableCell align="right">{row.payment ?
+                                        "paid" :
+                                        <Link to={`/dashboard/payment/${row._id}`} > <button>Pay</button> </Link>}</TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer> */}
+            </div>
         </div>
     );
 };

@@ -21,25 +21,48 @@ import useAuth from '../../../Hooks/UseAuth';
 const drawerWidth = 240;
 
 function Dashboard(props) {
-    const { user } = useAuth()
+    const { user, admin } = useAuth()
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
     let navigate = useNavigate()
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };
+    console.log(admin);
     const handleRoute = (text) => {
-        switch (text) {
-            case "Home": navigate('/home')
-                break;
-            case "Give Review": navigate('/dashboard/giveReview')
-                break;
-            case "My Plans": navigate('/dashboard/myPlans')
-                break;
-            case "Dashboard": navigate('/dashboard')
-                break;
-            default: navigate('/dashboard')
+
+        if (admin === true) { 
+            switch (text) {
+                case "Home": navigate('/home')
+                    break;
+                case "Give Review": navigate('/dashboard/giveReview')
+                    break;
+                case "My Plans": navigate('/dashboard/myPlans')
+                    break;
+                case "Dashboard": navigate('/dashboard')
+                    break;
+                case "Make Admin": navigate('/dashboard/makeAdmin')
+                    break;
+                case "Add Service": navigate('/dashboard/addServices')
+                    break;
+                default: navigate('/dashboard')
+            }
         }
+        else { 
+            switch (text) {
+                case "Home": navigate('/home')
+                    break;
+                case "Give Review": navigate('/dashboard/giveReview')
+                    break;
+                case "My Plans": navigate('/dashboard/myPlans')
+                    break;
+                case "Dashboard": navigate('/dashboard')
+                    break;
+                default: navigate('/dashboard')
+            }
+
+        }
+
     }
 
     const drawer = (
@@ -56,14 +79,25 @@ function Dashboard(props) {
                 </Typography></Toolbar>
             <Divider />
             <List>
-                {['Home', 'DashBoard', 'Give Review', 'My Plans'].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>
-                            {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                        </ListItemIcon>
-                        <ListItemText primary={text} onClick={() => handleRoute(text)} />
-                    </ListItem>
-                ))}
+                {
+                    admin ? ['Home', 'DashBoard', "Add Service", "Make Admin", 'Give Review', 'My Plans'].map((text, index) => (
+                        <ListItem button key={text}>
+                            <ListItemIcon>
+                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                            </ListItemIcon>
+                            <ListItemText primary={text} onClick={() => handleRoute(text)} />
+                        </ListItem>
+                    ))
+                        :
+                        ['Home', 'DashBoard', 'Give Review', 'My Plans'].map((text, index) => (
+                            <ListItem button key={text}>
+                                <ListItemIcon>
+                                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                                </ListItemIcon>
+                                <ListItemText primary={text} onClick={() => handleRoute(text)} />
+                            </ListItem>
+                        ))
+                }
             </List>
         </div>
     );
@@ -91,6 +125,9 @@ function Dashboard(props) {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap component="div" sx={{ mx: "auto", color: "black", fontWeight: "700" }} >
+                        {
+                            admin ? "welcom mr ADmin" : "welcom user"
+                        }
                         <img width={100} style={{ margin: "5px" }} src="http://ingenioushubs.com/Travel/demo/images/header-logo.png" alt="Logo" />
                     </Typography>
                 </Toolbar>

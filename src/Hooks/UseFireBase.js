@@ -11,6 +11,7 @@ const useFireBase = () => {
     const [user, setUser] = useState({});
     const [isLoading, setIsLoading] = useState(true);
     const [authError, setAuthError] = useState('');
+    const [admin, setAdmin] = useState(false);
     let navigate = useNavigate();
 
     const auth = getAuth();
@@ -26,6 +27,7 @@ const useFireBase = () => {
                 setAuthError('');
                 const user = result.user
                 setUser(user);
+                saveUser(user.email, user.displayName, 'PUT')
             }).catch((error) => {
                 setAuthError(error.message);
             })
@@ -40,6 +42,8 @@ const useFireBase = () => {
             .then((result) => {
                 const newUser = { email, displayName: name }
                 setUser(newUser);
+                //save user to the database
+                saveUser(email, name, 'POST');
                 //send name to firebase after creation
                 updateProfile(auth.currentUser, {
                     displayName: name
@@ -69,6 +73,11 @@ const useFireBase = () => {
             })
             .finally(() => setIsLoading(false));
     }
+    useEffect(() => {
+        fetch(`http://localhost:5000/users/${user.email}`)
+            .then(res => res.json())
+            .then(data => setAdmin(data.admin))
+    }, [user.email])
 
     // this is using for Log Out
     const logout = () => {
@@ -81,6 +90,18 @@ const useFireBase = () => {
                 setAuthError(error);
             }).finally(() => setIsLoading(false));
     }
+    const saveUser = (email, displayName, method) => {
+        const user = { email, displayName };
+        fetch('http://localhost:5000/users', {
+            method: method,
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then()
+    }
+
     // observer user state
     useEffect(() => {
         const unsubscribed = onAuthStateChanged(auth, (user) => {
@@ -98,6 +119,7 @@ const useFireBase = () => {
         user,
         signUsingGoogle,
         registerUser,
+        admin,
         logout,
         loginUser,
         isLoading,

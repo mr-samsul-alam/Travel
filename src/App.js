@@ -15,6 +15,8 @@ import DashBoard from './Pages/DashBoard/DashBoard/DashBoard';
 import DashBoardHome from './Pages/DashBoard/DashBoardHome/DashBoardHome';
 import GiveReview from './Pages/DashBoard/GiveReview/GiveReview';
 import MyCart from './Pages/DashBoard/MyCart/MyCart';
+import AddServices from './Pages/DashBoard/AddServices/AddServices';
+import MakeAdmin from './Pages/DashBoard/MakeAdmin/MakeAdmin';
 
 function App() {
   return (
@@ -30,7 +32,7 @@ function App() {
 
             <Route path="/dashboard" element={<PrivateRoute>
               <DashBoard />
-            </PrivateRoute>}>
+             </PrivateRoute>}>
 
               <Route exact path="/dashboard" element={<PrivateRoute><DashBoardHome /></PrivateRoute>}>
               </Route>
@@ -39,8 +41,15 @@ function App() {
               </Route>
               <Route path={"/dashboard/myPlans"} element={<PrivateRoute><MyCart /></PrivateRoute>}>
               </Route>
+              <Route path={"/dashboard/addServices"} element={<PrivateRoute><AddServices /></PrivateRoute>}>
+              </Route>
+              <Route path={"/dashboard/makeAdmin"} element={<PrivateRoute><MakeAdmin /></PrivateRoute>}>
+              </Route>
 
             </Route>
+
+
+            
             <Route path="popular_destinations" element={<PopularDestination />} />
             <Route path="signIn" element={<SignIn />} />
             <Route path="signUp" element={<SignUp />} />
