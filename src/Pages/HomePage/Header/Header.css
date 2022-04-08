@@ -1,26 +1,25 @@
-.bogBoss {
-    position: relative; 
+.mainComponent {
+    position: relative;
 }
 
-.boxSir {
+.headerText {
     position: absolute;
-    bottom: 300px;
-    left: 700px;
-    right: 100px;
+    left: 951px;
     width: 50%;
     height: 200px;
-    border: 3px solid #73AD21;
+    bottom: 300px;
 }
 
-@media only screen and (max-width: 600px) {
-    .bogBoss {
-        position: relative; 
-        border: 3px solid #ad212f;
+
+
+@media only screen and (max-width: 800px) {
+    .mainComponent {
+        position: relative;
     }
 
-    .boxSir {
+    .headerText {
         position: absolute;
-        bottom: 50px;
+        bottom: 500px;
         left: 0px;
         right: 0px;
         width: 100%;
@@ -28,19 +27,20 @@
 
     }
 }
-@media only screen and (max-width: 1200px) {
-    .bogBoss {
-        position: relative; 
-        border: 3px solid #ad212f;
+
+@media only screen and (max-width: 1550px) {
+    .mainComponent {
+        position: relative;
     }
 
-    .boxSir {
+    .headerText {
         position: absolute;
-        bottom: 50px;
+        bottom: 300px;
         left: 0px;
         right: 0px;
         width: 100%;
         height: 200px;
+        font-size: 500px;
 
     }
 }

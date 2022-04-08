@@ -35,8 +35,8 @@ const AddServices = () => {
     }
     return (
         <Container>
-            <Typography variant="h4" component="div" gutterBottom>
-                Add Product
+            <Typography variant='h3' style={{ textAlign: 'center', justifyContent: "center", padding: '10px' }}>
+                Add Services
             </Typography>
             {
                 added && <Alert severity="success">Made Admin successfully!</Alert>

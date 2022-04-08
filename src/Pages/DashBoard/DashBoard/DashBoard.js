@@ -27,10 +27,10 @@ function Dashboard(props) {
     let navigate = useNavigate()
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
-    }; 
+    };
     const handleRoute = (text) => {
 
-        if (admin === true) { 
+        if (admin === true) {
             switch (text) {
                 case "Home": navigate('/home')
                     break;
@@ -44,10 +44,12 @@ function Dashboard(props) {
                     break;
                 case "Add Service": navigate('/dashboard/addServices')
                     break;
+                case "Manage Order": navigate('/dashboard/manageOrder')
+                    break;
                 default: navigate('/dashboard')
             }
         }
-        else { 
+        else {
             switch (text) {
                 case "Home": navigate('/home')
                     break;
@@ -79,7 +81,7 @@ function Dashboard(props) {
             <Divider />
             <List>
                 {
-                    admin ? ['Home', 'DashBoard', "Add Service", "Make Admin", 'Give Review', 'My Plans'].map((text, index) => (
+                    admin ? ['Home', 'DashBoard', 'Give Review', 'My Plans', "Add Service", "Manage Order", "Make Admin"].map((text, index) => (
                         <ListItem button key={text}>
                             <ListItemIcon>
                                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
@@ -124,9 +126,6 @@ function Dashboard(props) {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap component="div" sx={{ mx: "auto", color: "black", fontWeight: "700" }} >
-                        {
-                            admin ? "welcom mr ADmin" : "welcom user"
-                        }
                         <img width={100} style={{ margin: "5px" }} src="http://ingenioushubs.com/Travel/demo/images/header-logo.png" alt="Logo" />
                     </Typography>
                 </Toolbar>

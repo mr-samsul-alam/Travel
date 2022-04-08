@@ -5,7 +5,7 @@ import useAuth from '../Hooks/UseAuth';
 const PrivateRoute = ({ children, ...rest }) => {
     const { user, isLoading } = useAuth();
     let location = useLocation();
-    if (isLoading) { return <CircularProgress></CircularProgress> }
+    if (isLoading) { return <CircularProgress sx={{ mx: 'auto' }}  ></CircularProgress> }
     if (user.email) {
         return children;
     }

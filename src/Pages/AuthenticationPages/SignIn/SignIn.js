@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Container, Typography, TextField, Button, CircularProgress, Alert } from '@mui/material';
 import { Grid } from '@mui/material';
-import { NavLink, useLocation } from 'react-router-dom'; 
+import { NavLink, useLocation } from 'react-router-dom';
 import useAuth from '../../../Hooks/UseAuth';
 import Navigations from '../../Shared/Navigations/Navigations';
 const SignIn = () => {
@@ -27,8 +27,8 @@ const SignIn = () => {
     signUsingGoogle(location)
   }
   return (
-    <>  
-    <Navigations></Navigations>
+    <>
+      <Navigations></Navigations>
       <Container>
         <Grid container spacing={2}>
           <Grid item sx={{ mt: 8 }} xs={12} md={12}>
@@ -55,7 +55,7 @@ const SignIn = () => {
                 to="/signUp">
                 <Button variant="text">New User? Please Register</Button>
               </NavLink>
-              {isLoading && <CircularProgress />}
+              {isLoading && <CircularProgress sx={{ mx: 'auto' }} />}
               {user?.email && <Alert severity="success">Login successfully!</Alert>}
               {authError && <Alert severity="error">{authError}</Alert>}
             </form>
@@ -65,7 +65,7 @@ const SignIn = () => {
           </Grid>
 
         </Grid>
-      </Container> 
+      </Container>
     </>
   );
 };

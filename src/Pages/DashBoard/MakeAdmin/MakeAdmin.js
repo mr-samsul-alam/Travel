@@ -1,9 +1,9 @@
 import { Button, TextField, Alert } from '@mui/material';
-import React, { useState } from 'react'; 
+import React, { useState } from 'react';
 
 const MakeAdmin = () => {
     const [email, setEmail] = useState('');
-    const [success, setSuccess] = useState(false); 
+    const [success, setSuccess] = useState(false);
 
     const handleOnBlur = e => {
         setEmail(e.target.value);
@@ -12,7 +12,7 @@ const MakeAdmin = () => {
         const user = { email };
         fetch('http://localhost:5000/users/admin', {
             method: 'PUT',
-            headers: { 
+            headers: {
                 'content-type': 'application/json'
             },
             body: JSON.stringify(user)

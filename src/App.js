@@ -5,7 +5,7 @@ import Homepage from './Pages/HomePage/Homepage/Homepage';
 import SignUp from './Pages/AuthenticationPages/SignUp/SignUp';
 import AboutPage from './Pages/AboutPage/AboutPage';
 import SignIn from './Pages/AuthenticationPages/SignIn/SignIn';
-import PopularDestination from './Pages/PopularDestination/PopularDestination/PopularDestination'; 
+import PopularDestination from './Pages/PopularDestination/PopularDestination/PopularDestination';
 import Footer from './Pages/Shared/Footer/Footer';
 import PackagesPage from './Pages/PackagesPage/PackagesPage/PackagesPage';
 import AuthProvider from './Context/AuthProvider';
@@ -17,6 +17,7 @@ import GiveReview from './Pages/DashBoard/GiveReview/GiveReview';
 import MyCart from './Pages/DashBoard/MyCart/MyCart';
 import AddServices from './Pages/DashBoard/AddServices/AddServices';
 import MakeAdmin from './Pages/DashBoard/MakeAdmin/MakeAdmin';
+import ManageOrder from './Pages/DashBoard/ManageOrder/ManageOrder';
 
 function App() {
   return (
@@ -32,7 +33,7 @@ function App() {
 
             <Route path="/dashboard" element={<PrivateRoute>
               <DashBoard />
-             </PrivateRoute>}>
+            </PrivateRoute>}>
 
               <Route exact path="/dashboard" element={<PrivateRoute><DashBoardHome /></PrivateRoute>}>
               </Route>
@@ -43,13 +44,15 @@ function App() {
               </Route>
               <Route path={"/dashboard/addServices"} element={<PrivateRoute><AddServices /></PrivateRoute>}>
               </Route>
+              <Route path={"/dashboard/manageOrder"} element={<PrivateRoute><ManageOrder /></PrivateRoute>}>
+              </Route>
               <Route path={"/dashboard/makeAdmin"} element={<PrivateRoute><MakeAdmin /></PrivateRoute>}>
               </Route>
 
             </Route>
 
 
-            
+
             <Route path="popular_destinations" element={<PopularDestination />} />
             <Route path="signIn" element={<SignIn />} />
             <Route path="signUp" element={<SignUp />} />

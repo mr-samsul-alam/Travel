@@ -92,7 +92,7 @@ const SignUp = () => {
                 <Button variant="text">Already Registered? Please Login</Button>
               </NavLink>
             </form>}
-            {isLoading && <CircularProgress />}
+            {isLoading && <CircularProgress sx={{ mx: 'auto' }} />}
             {user?.email && <Alert severity="success">User Created successfully!</Alert>}
             {authError && <Alert severity="error">{authError}</Alert>}
 

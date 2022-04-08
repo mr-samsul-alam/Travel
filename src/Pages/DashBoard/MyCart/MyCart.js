@@ -7,6 +7,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import useAuth from '../../../Hooks/UseAuth';
+import { Container, Typography } from '@mui/material';
 
 const MyCart = () => {
     const [order, SetOrder] = useState([])
@@ -21,7 +22,10 @@ const MyCart = () => {
         console.log("going to dele", id);
         const url = `http://localhost:5000/bookingInfo/${id}}`
         fetch(url, {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: {
+                'content-type': 'application/json'
+            }
         })
             .then(res => res.json())
             .then(data => {
@@ -33,8 +37,10 @@ const MyCart = () => {
     console.log(order);
     return (
         <div>
-            <h1>hellow from my cart</h1>
-            <div>
+            <Typography variant='h3' style={{ textAlign: 'center', justifyContent: "center", padding: '10px' }}>
+                My Plan
+            </Typography>
+            <Container>
                 <TableContainer component={Paper}>
                     <Table sx={{}} aria-label="Appointments table">
                         <TableHead>
@@ -66,7 +72,7 @@ const MyCart = () => {
                         </TableBody>
                     </Table>
                 </TableContainer>
-            </div>
+            </Container>
         </div>
     );
 };
